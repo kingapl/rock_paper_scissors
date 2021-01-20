@@ -1,4 +1,4 @@
-from random import randrange
+from random import choice
 
 game = True
 symbols = ['rock', 'paper', 'scissors']
@@ -14,8 +14,7 @@ def user_choice():
 
 
 def computer_choice():
-    s_num = randrange(len(symbols))
-    com_choice = symbols[s_num]
+    com_choice = choice(symbols)
 
     return com_choice
 
