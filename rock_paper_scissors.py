@@ -1,51 +1,67 @@
+import tkinter
 from random import choice
 
-game = True
-symbols = ['rock', 'paper', 'scissors']
+
+class RockPaperScissors(tkinter.Frame):
+    def __init__(self, root):
+        super().__init__(root)
+        self.root = root
+        self.pack()
+
+        root.geometry("400x400")
+        root.title("Rock Paper Scissors")
+
+        self.create_widgets()
 
 
-def user_choice():
-    u_choice = input("\nChoice rock, paper or scissors and press enter.\n")
+    def create_widgets(self):
+        self.game_name = tkinter.Label(text="Rock Paper Scissors", font="courier 24")
+        self.game_name.pack()
 
-    while u_choice != 'rock' and u_choice != 'paper' and u_choice != 'scissors':
-        u_choice = input("Enter the correct name 'rock', 'paper' or 'scissors'.\n")
+        self.instruction_text = tkinter.Label(text="Choose rock, paper or scissors", font="Arial 12", height=3)
+        self.instruction_text.pack()
 
-    return u_choice
+        self.user_choice = tkinter.StringVar()
+        self.user_entry = tkinter.Entry(textvariable=self.user_choice, font="Arial 12")
+        self.user_entry.pack()
 
+        self.play_btn = tkinter.Button(root, text="Play", command=self.play, font="Arial 14")
+        self.play_btn.pack()
 
-def computer_choice():
-    com_choice = choice(symbols)
+        self.game_result = tkinter.StringVar()
+        self.computer_entry = tkinter.Entry(root, text=self.game_result, font="Arial 12")
+        self.computer_entry.pack()
 
-    return com_choice
-
-
-def result(u_choice, com_choice):
-    if ((u_choice == 'rock' and com_choice == 'rock') or
-        (u_choice == 'paper' and com_choice == 'paper') or
-        (u_choice == 'scissors' and com_choice == 'scissors')):
-            return "Dead-heat"
-
-    elif ((u_choice == 'rock' and com_choice == 'scissors') or
-        (u_choice == 'paper' and com_choice == 'rock') or
-        (u_choice == 'scissors' and com_choice == 'paper')):
-            return "You win!"
-
-    elif ((u_choice == 'rock' and com_choice == 'paper') or
-        (u_choice == 'paper' and com_choice == 'scissors') or
-        (u_choice == 'scissors' and com_choice == 'rock')):
-            return "You lost!"
+        self.reset_btn = tkinter.Button(root, text="Reset", command=self.reset, font="Arial 14")
+        self.reset_btn.pack(side="bottom")
 
 
-while game == True:
-    u_choice = user_choice()
-    com_choice = computer_choice()
-    game_result = result(u_choice, com_choice)
+    def play(self):
+        user_pick = self.user_choice.get()
+        symbols = ["rock", "paper", "scissors"]
+        comp_choice = choice(symbols)
 
-    print(f"\nYour choice: {u_choice}.")
-    print(f"Computer choice: {com_choice}.")
-    print(f"\n{game_result}")
+        if ((user_pick == 'rock' and comp_choice == 'rock') or
+            (user_pick == 'paper' and comp_choice == 'paper') or
+            (user_pick == 'scissors' and comp_choice == 'scissors')):
+                self.game_result.set("Dead-heat")
 
-    answer = input(f"\nDo you want to play again? y/n ")
+        elif ((user_pick == 'rock' and comp_choice == 'scissors') or
+            (user_pick == 'paper' and comp_choice == 'rock') or
+            (user_pick == 'scissors' and comp_choice == 'paper')):
+                self.game_result.set("You win!")
 
-    if answer.lower() != 'y':
-        game = False
+        elif ((user_pick == 'rock' and comp_choice == 'paper') or
+            (user_pick == 'paper' and comp_choice == 'scissors') or
+            (user_pick == 'scissors' and comp_choice == 'rock')):
+                self.game_result.set("You lost!")
+
+
+    def reset(self):
+        self.user_entry.delete(0, 'end')
+        self.computer_entry.delete(0, 'end')
+
+
+root = tkinter.Tk()
+rock_paper_scissors = RockPaperScissors(root)
+root.mainloop()
