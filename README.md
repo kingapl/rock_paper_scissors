@@ -15,4 +15,4 @@ The game consists in choosing one of three symbols: "paper", "stone" or "scissor
 Python 3.8.
 
 ## Setup
-The game must be run in the console or the terminal depending on the computer system.
+The game must be run by the console or the terminal depending on the computer system.
