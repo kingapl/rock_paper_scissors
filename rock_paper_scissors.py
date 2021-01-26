@@ -15,38 +15,38 @@ class RockPaperScissors(tkinter.Frame):
 
 
     def create_widgets(self):
-        self.game_name = tkinter.Label(text="Rock Paper Scissors", font="courier 24")
-        self.game_name.pack(side="top")
+        self.game_name = tkinter.Label(self, text="Rock Paper Scissors", font="courier 24")
+        self.game_name.grid(row=0, column=0, columnspan=2)
 
-        self.instruction_text = tkinter.Label(text="Choose rock, paper or scissors", font="Arial 12", height=3)
-        self.instruction_text.pack(side="top")
+        self.instruction_text = tkinter.Label(self, text="Choose rock, paper or scissors", font="Arial 12", height=3)
+        self.instruction_text.grid(row=1, column=0, columnspan=2)
 
-        self.user_label = tkinter.Label(text="Your choice:")
-        self.user_label.pack()
+        self.user_label = tkinter.Label(self, text="Your choice:")
+        self.user_label.grid(row=2, column=0)
 
         self.user_choice = tkinter.StringVar()
-        self.user_entry = tkinter.Entry(textvariable=self.user_choice, font="Arial 12")
-        self.user_entry.pack()
+        self.user_entry = tkinter.Entry(self, textvariable=self.user_choice, font="Arial 12")
+        self.user_entry.grid(row=2, column=1)
 
-        self.play_btn = tkinter.Button(text="Play", command=self.play, font="Arial 14")
-        self.play_btn.pack()
+        self.play_btn = tkinter.Button(self, text="Play", command=self.play, font="Arial 14")
+        self.play_btn.grid(row=3, column=0, columnspan=2)
 
-        self.computer_label = tkinter.Label(text="Computer choice:")
-        self.computer_label.pack()
+        self.computer_label = tkinter.Label(self, text="Computer choice:")
+        self.computer_label.grid(row=4, column=0)
 
         self.computer_choice = tkinter.StringVar()
-        self.computer_entry = tkinter.Entry(text=self.computer_choice, font="Arial 12")
-        self.computer_entry.pack()
+        self.computer_entry = tkinter.Entry(self, text=self.computer_choice, font="Arial 12")
+        self.computer_entry.grid(row=4, column=1)
 
-        self.result = tkinter.Label(text="Result:")
-        self.result.pack()
+        self.result = tkinter.Label(self, text="Result:")
+        self.result.grid(row=5, column=0, columnspan=2)
 
         self.game_result = tkinter.StringVar()
-        self.result_entry = tkinter.Entry(text=self.game_result, font="Arial 12")
-        self.result_entry.pack()
+        self.result_entry = tkinter.Entry(self, text=self.game_result, font="Arial 12")
+        self.result_entry.grid(row=6, column=0, columnspan=2)
 
-        self.reset_btn = tkinter.Button(text="Reset", command=self.reset, font="Arial 14")
-        self.reset_btn.pack()
+        self.reset_btn = tkinter.Button(self, text="Reset", command=self.reset, font="Arial 14")
+        self.reset_btn.grid(row=7, column=0, columnspan=2)
 
 
     def play(self):
