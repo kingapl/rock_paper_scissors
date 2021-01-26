@@ -12,7 +12,9 @@ The game consists in choosing one of three symbols: "paper", "stone" or "scissor
 "Paper" beats "stone", "stone" beats "scissors" and "scissors" beats "paper". The player wins if the symbol chosen by him beats the symbol chosen by the computer.
 
 ## Technologies
-Python 3.8.
+Project is created with:
+* Python 3.8
+* Tkinter 8.6
 
 ## Setup
 The game must be run by the console or the terminal depending on the computer system.
